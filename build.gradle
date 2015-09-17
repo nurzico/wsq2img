@@ -1,0 +1,31 @@
+group 'com.companyless.useless'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'distribution'
+
+sourceCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'WSQ to IMAGE',
+                'Implementation-Version': version,
+                'Main-Class' : 'com.companyless.useless.web.Server'
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile 'com.sparkjava:spark-core:2.2',
+            'com.google.code.gson:gson:2.3.1',
+            'com.github.mhshams:jnbis:2.0.0'
+}
