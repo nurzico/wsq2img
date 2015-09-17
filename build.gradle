@@ -2,7 +2,7 @@ group 'com.companyless.useless'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
-apply plugin: 'distribution'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
 
@@ -12,11 +12,9 @@ jar {
                 'Implementation-Version': version,
                 'Main-Class' : 'com.companyless.useless.web.Server'
     }
-
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    }
 }
+
+mainClassName = 'com.companyless.useless.web.Server'
 
 repositories {
     mavenCentral()
@@ -28,4 +26,18 @@ dependencies {
     compile 'com.sparkjava:spark-core:2.2',
             'com.google.code.gson:gson:2.3.1',
             'com.github.mhshams:jnbis:2.0.0'
+}
+
+task copyLib {
+    outputs.file new File("$buildDir/lib")
+    doLast {
+        copy {
+            from "lib"
+            into "$buildDir"
+        }
+    }
+}
+
+applicationDistribution.from(copyLib) {
+    into ""
 }
