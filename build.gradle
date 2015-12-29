@@ -41,3 +41,7 @@ task copyLib {
 applicationDistribution.from(copyLib) {
     into ""
 }
+
+task stage {
+    dependsOn installDist
+}
