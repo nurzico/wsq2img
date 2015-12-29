@@ -2,6 +2,7 @@
 <html lang="en">
 <meta charset="UTF-8">
 <link href="/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/style.css" rel="stylesheet" type="text/css"/>
 <script src="/jquery-1.8.3.min.js"></script>
 <title>WSQ Viewer</title>
 <style>
@@ -24,8 +25,8 @@
 <div class="container">
 <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-5 left-side">
-        <label class="right">Select WSQ file</label>
+    <div class="col-md-5">
+        <label>Select WSQ file</label>
         <input id="wsq1" class="form-control input-right" type="file" name="wsq">
 
         <form id="wsq-form1" action="/process" method="post">
@@ -50,6 +51,9 @@
     </div>
     <div class="col-md-1"></div>
 </div>
+    <div class="row">
+        <footer>&copy; <a target="_blank" href="https://github.com/nurzico/wsq2img">wsq2img</a></footer>
+    </div>
 </div>
 <script>
     $("#btn1").click({form: '#wsq-form1', view: "#jpg1"}, uploadFiles);
@@ -57,6 +61,7 @@
     var files, blob;
     $('#wsq1').on('change', {dataNode: '#data1'}, prepareUpload);
     $('#wsq2').on('change', {dataNode: '#data2'}, prepareUpload);
+    var spinner = '<div class="spinner"></div>';
 
     function prepareUpload(event) {
         files = event.target.files;
@@ -74,7 +79,7 @@
 
         event.stopPropagation();
         event.preventDefault();
-
+        $(event.data.view).html(spinner);
         var formData = $(event.data.form).serialize();
         $.post("/process", formData, function (data) {
             if (data != "ERROR") {
