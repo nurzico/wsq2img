@@ -16,6 +16,12 @@ jar {
 
 mainClassName = 'com.companyless.useless.web.Server'
 
+startScripts {
+    doLast {
+        unixScript.text = unixScript.text.replace('DEFAULT_JVM_OPTS=""', 'DEFAULT_JVM_OPTS="-Dserver.port=$PORT"')
+    }
+}
+
 repositories {
     mavenCentral()
 }

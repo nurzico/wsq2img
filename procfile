@@ -1,1 +1,1 @@
-web: build/install/wsq2img/bin/wsq2img --server.port=$PORT
+web: build/install/wsq2img/bin/wsq2img
