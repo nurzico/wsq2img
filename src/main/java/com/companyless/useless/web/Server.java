@@ -7,6 +7,7 @@ import sun.misc.BASE64Encoder;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
+import static spark.SparkBase.port;
 import static spark.SparkBase.staticFileLocation;
 
 /**
@@ -17,6 +18,7 @@ public class Server {
 
     public static void main(String[] args) {
         Server server = new Server();
+        port(Integer.parseInt(System.getProperty("server.port")));
         staticFileLocation("/static");
 
 
