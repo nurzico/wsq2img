@@ -18,7 +18,7 @@ public class Server {
 
     public static void main(String[] args) {
         Server server = new Server();
-        port(Integer.parseInt(System.getProperty("server.port")));
+        port(80);
         staticFileLocation("/static");
 
 
