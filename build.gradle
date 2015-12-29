@@ -45,3 +45,6 @@ applicationDistribution.from(copyLib) {
 task stage {
     dependsOn installDist
 }
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
