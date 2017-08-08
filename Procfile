@@ -1,1 +1,1 @@
-web: build/install/wsq2img/bin/wsq2img
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/wsq2img-1.0-SNAPSHOT.jar
