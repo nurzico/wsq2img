@@ -48,9 +48,10 @@ applicationDistribution.from(copyLib) {
     into ""
 }
 
-task stage {
-    dependsOn installDist
-}
+task stage(dependsOn: ['build', 'clean'])
+
+build.mustRunAfter clean
+
 task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
 }
