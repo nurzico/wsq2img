@@ -10,7 +10,7 @@ jar {
     manifest {
         attributes 'Implementation-Title': 'WSQ to IMAGE',
                 'Implementation-Version': version,
-                'Main-Class' : 'com.companyless.useless.web.Server'
+                'Main-Class': 'com.companyless.useless.web.Server'
     }
 }
 
@@ -34,14 +34,9 @@ dependencies {
             'com.github.mhshams:jnbis:2.0.0'
 }
 
-task copyLib {
-    outputs.file new File("$buildDir/lib")
-    doLast {
-        copy {
-            from "lib"
-            into "$buildDir"
-        }
-    }
+task copyLib(type: Copy) {
+    from(configurations.compile)
+    into "$buildDir/lib"
 }
 
 applicationDistribution.from(copyLib) {
@@ -50,6 +45,7 @@ applicationDistribution.from(copyLib) {
 
 task stage(dependsOn: ['build', 'clean'])
 
+stage.dependsOn(copyLib)
 build.mustRunAfter clean
 
 task wrapper(type: Wrapper) {
