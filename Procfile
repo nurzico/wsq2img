@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -cp build/libs/*:build/lib/* com.companyless.useless.web.Server
+web: java -Dserver.port=$PORT $JAVA_OPTS -cp build/libs/*:build/lib/* com.github.nurzico.wsq2img.web.Server

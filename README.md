@@ -1,9 +1,16 @@
 # wsq2img
-Simple web application for WSQ viewer
+Simple application to view WSQ in web browser!
 
-Just run the main method to start server. 
+### You can check [here](http://wsq2img.herokuapp.com/index.html) deployed
+
+WSQ decoder [library](https://github.com/mhshams/jnbis) used.
+
+### Selfhost?
+
+To run using gradle?
+`gradle clean run`
 <br>
-Then checkout <code>http://localhost:4567</code>
+Then checkout `http://localhost:8090/`
 <br>
 <br>
-To make distribution <code>gradle distZip</code>
+To make dist `gradle clean distZip`

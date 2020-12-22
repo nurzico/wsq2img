@@ -1,4 +1,4 @@
-package com.companyless.useless.service;
+package com.github.nurzico.wsq2img.service;
 
 import org.jnbis.api.Jnbis;
 

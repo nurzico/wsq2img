@@ -1,20 +1,19 @@
-group 'com.companyless.useless'
-version '1.0-SNAPSHOT'
-
 apply plugin: 'java'
 apply plugin: 'application'
 
 sourceCompatibility = 1.8
 
+version '1.0-RELEASE'
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'WSQ to IMAGE',
                 'Implementation-Version': version,
-                'Main-Class': 'com.companyless.useless.web.Server'
+                'Main-Class': 'com.github.nurzico.wsq2img.web.Server'
     }
 }
 
-mainClassName = 'com.companyless.useless.web.Server'
+mainClassName = 'com.github.nurzico.wsq2img.web.Server'
 
 startScripts {
     doLast {
@@ -31,7 +30,8 @@ dependencies {
 
     compile 'com.sparkjava:spark-core:2.2',
             'com.google.code.gson:gson:2.3.1',
-            'com.github.mhshams:jnbis:2.0.0'
+            'com.github.mhshams:jnbis:2.0.2',
+            'org.apache.commons:commons-imaging:1.0-alpha2'
 }
 
 task copyLib(type: Copy) {
@@ -47,7 +47,3 @@ task stage(dependsOn: ['build', 'clean'])
 
 stage.dependsOn(copyLib)
 build.mustRunAfter clean
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.4'
-}

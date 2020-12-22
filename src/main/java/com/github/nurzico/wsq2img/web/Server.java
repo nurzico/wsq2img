@@ -1,7 +1,7 @@
-package com.companyless.useless.web;
+package com.github.nurzico.wsq2img.web;
 
-import com.companyless.useless.service.JsonTransformer;
-import com.companyless.useless.service.WsqDecoder;
+import com.github.nurzico.wsq2img.service.JsonTransformer;
+import com.github.nurzico.wsq2img.service.WsqDecoder;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -18,7 +18,11 @@ public class Server {
 
     public static void main(String[] args) {
         Server server = new Server();
-        port(Integer.parseInt(System.getProperty("server.port")));
+        int port;
+        if (null != System.getProperty("server.port"))
+            port = Integer.parseInt(System.getProperty("server.port"));
+        else port = 8090;
+        port(port);
         staticFileLocation("/static");
 
 

@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
 <link href="/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="/style.css" rel="stylesheet" type="text/css"/>
 <script src="/jquery-1.8.3.min.js"></script>
 <title>WSQ Viewer</title>
 <style>
-    body{
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    .left-side{
+    .left-side {
         border-right: 4px solid #eee;
     }
-    .right{
+
+    .right {
         float: right;
     }
-    .img-box{
+
+    .img-box {
         padding-top: 5%;
         min-height: 500px;
     }
@@ -23,36 +24,40 @@
 </head>
 <body>
 <div class="container">
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <label>Select WSQ file</label>
-        <input id="wsq1" class="form-control input-right" type="file" name="wsq">
-
-        <form id="wsq-form1" action="/process" method="post">
-            <fieldset class="form-group">
-                <input type="hidden" id="data1" name="wsq" value="">
-            </fieldset>
-            <button id="btn1" class="btn btn-primary right">View WSQ</button>
-        </form>
-        <div id="jpg1" class="right img-box"></div>
-    </div>
-    <div class="col-md-5">
-        <label>Select WSQ file</label>
-        <input id="wsq2" class="form-control" type="file" name="wsq">
-
-        <form id="wsq-form2" action="/process" method="post">
-            <fieldset class="form-group">
-                <input type="hidden" id="data2" name="wsq" value="">
-            </fieldset>
-            <button id="btn2" class="btn btn-primary">View WSQ</button>
-        </form>
-        <div id="jpg2" class="img-box"></div>
-    </div>
-    <div class="col-md-1"></div>
-</div>
     <div class="row">
-        <footer>&copy; <a target="_blank" href="https://github.com/nurzico/wsq2img">wsq2img</a></footer>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <form method="post" action="/process" id="wsq-form1">
+                <div class="form-group files">
+                    <label>Upload Your WSQ File </label>
+                    <input id="wsq1" class="form-control" type="file">
+                    <input type="hidden" id="data1" name="wsq" value="">
+                </div>
+            </form>
+            <button id="btn1" class="btn btn-primary right">View WSQ</button>
+            <div id="jpg1" class="right img-box"></div>
+        </div>
+        <div class="col-md-5">
+            <form method="post" action="/process" id="wsq-form2">
+                <div class="form-group files">
+                    <label>Upload Your WSQ File </label>
+                    <input id="wsq2" class="form-control" type="file">
+                    <input type="hidden" id="data2" name="wsq" value="">
+                </div>
+            </form>
+            <button id="btn2" class="btn btn-primary">View WSQ</button>
+            <div id="jpg2" class="img-box"></div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <center>
+                <footer>💛️ From <a target="_blank" href="https://github.com/nurzico/wsq2img">Zico</a></footer>
+            </center>
+        </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
 <script>
@@ -88,11 +93,10 @@
                 $img.addClass("card card-block");
                 $(event.data.view).html($img);
             } else {
-                $(event.data.view).html('<span class="alert-danger card card-block">Error while processing WSQ</span>');
+                $(event.data.view).html('<span class="alert-danger card card-block">Error processing WSQ</span>');
             }
         }, "json");
     }
-
 </script>
 </body>
 </html>
